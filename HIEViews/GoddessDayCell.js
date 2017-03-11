@@ -23,6 +23,7 @@ export default class GoddessDayCell extends Component {
         <Text style={{padding: 10}}>
           { this.props.rowData.name }
         </Text>
+        <Image style={{ flex: 1, width: 300, height: 170 }} source={{uri: this.props.rowData.picSmall}} />
       </View>
     );
   }
@@ -34,5 +35,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  imageStyle: {
+    paddingLeft: 10,
+    width: 300,
+    height: 170,
   },
 });
