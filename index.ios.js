@@ -43,12 +43,12 @@ export default class RNListViewDemo extends Component {
     .done();
   }
   componentDidMount() {
-    this.fetchData();
+    // this.fetchData();
   }
   renderLoadingView() {
     return(
       <View style={ styles.container}>
-        <LoadingButton titleText={ '加载电影数据' } touchup={this.fetchData} />
+        <LoadingButton titleText={ '加载电影数据' } touchup={this.fetchData.bind(this)} />
       </View>
     );
   }
@@ -59,13 +59,13 @@ export default class RNListViewDemo extends Component {
   }
   render() {
     if (!this.state.loaded) {
-      return this.renderLoadingView()
+      return this.renderLoadingView();
     }
     return(
       <View>
-        <ListView style={styles.listView} 
-                  dataSource={this.state.dataSource}
-                  renderRow={(rowData) => this._renderRow(rowData)}
+        <ListView style={ styles.listView } 
+                  dataSource={ this.state.dataSource } 
+                  renderRow={ (rowData) => this._renderRow(rowData) }
                   />
       </View>
     );
