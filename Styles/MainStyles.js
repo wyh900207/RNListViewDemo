@@ -19,10 +19,10 @@ export default StyleSheet.create({
     padding: 10,
   },
   centerText: {
+    flex: 1,
     fontSize: 15,
-    padding: 10,
-    paddingTop: 0,
-    flexWrap: 'wrap'
+    paddingLeft: 10,
+    color: 'rgba(1, 1, 1, 0.6)'
   },
   imageStyle: {
     width: 120,
