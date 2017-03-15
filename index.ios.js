@@ -10,31 +10,18 @@ import {
   StyleSheet,
   Text,
   View,
-  ListView,
-  TouchableOpacity,
 } from 'react-native';
+import Styles from './Styles/MainStyles';
 import MovieList from './Components/MovieList';
 import Dimensions from 'Dimensions';
 
 export default class RNListViewDemo extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return(
       <MovieList />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
 
 AppRegistry.registerComponent('RNListViewDemo', () => RNListViewDemo);
   

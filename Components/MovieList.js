@@ -1,43 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
   Text,
   View,
   ListView,
-  TouchableOpacity,
-  ActivityIndicator,
 } from 'react-native';
-import GoddessDayCell from './GoddessDayCell'
-import LoadingButton from './LoadingButton'
-import Dimensions from 'Dimensions';
-var width = Dimensions.get('window').width;
-var height = Dimensions.get('window').height;
+import Dimensions from 'Dimensions'
+import Styles from '../Styles/MainStyles'
+import LoadingView from './LoadingView'
+import MovieListCell from './MovieListCell'
 
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
     var ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
-    });
+    }); 
     this.state = {
       dataSource: ds,
       loaded: false
-    }
+    };
   }
   fetchData() {
     let url = 'http://www.imooc.com/api/teacher?type=4&num=30';
     fetch(url)
     .then((response) => response.json())
-    .then((resonpseJson) => {
+    .then((responseJson) => {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(resonpseJson.data),
+        dataSource: this.state.dataSource.cloneWithRows(responseJson.data),
         loaded: true
       });
     })
@@ -46,40 +35,27 @@ export default class MovieList extends Component {
   componentDidMount() {
     this.fetchData();
   }
-  renderLoadingView() {
+  _renderRow(rowdata) {
     return(
-      <ActivityIndicator size='large' style={styles.container} />
+      <MovieListCell rowdata={rowdata} />
     );
   }
-  _renderRow(rowData) {
+  _renderLoadingView() {
     return(
-      <GoddessDayCell rowData={ rowData } />
+      <LoadingView />
     );
   }
   render() {
     if (!this.state.loaded) {
-      return this.renderLoadingView();
+      return this._renderLoadingView();
     }
     return(
-      <View style={styles.container}>
-        <ListView style={ styles.listView } 
-                  dataSource={ this.state.dataSource } 
-                  renderRow={ (rowData) => this._renderRow(rowData) }
+      <View style={Styles.container}>
+        <ListView dataSource={this.state.dataSource}
+                  renderRow={(rowdata) => this._renderRow(rowdata)}
+                  style={Styles.listStyle}
                   />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  listView: {
-    marginTop: 20,
-    width: width,
-  },
-});
