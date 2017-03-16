@@ -37,7 +37,7 @@ export default class MovieList extends Component {
   }
   _renderRow(rowdata) {
     return(
-      <MovieListCell rowdata={rowdata} />
+      <MovieListCell rowdata={rowdata} selectedRow={() => {console.log('点击了${rowdata.name}')}} />
     );
   }
   _renderLoadingView() {
