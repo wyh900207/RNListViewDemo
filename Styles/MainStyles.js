@@ -13,7 +13,8 @@ export default StyleSheet.create({
   },
   listStyle: {
     flex: 1,
-    paddingTop: 20,
+    marginTop: 60,
+    marginBottom: 49,
     width: width,
   },
   contentStyle: {

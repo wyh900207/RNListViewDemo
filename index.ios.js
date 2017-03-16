@@ -17,6 +17,7 @@ import MovieList from './Components/MovieList';
 import Icons from './Assert/Icons';
 import Dimensions from 'Dimensions';
 import Featured from './Components/Featured';
+import MostView from './Components/MostView'
 
 export default class RNListViewDemo extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class RNListViewDemo extends Component {
                             selectedTab: 'most-viewed'
                           });
                         }}>
-          <MovieList />
+          <MostView />
         </TabBarIOS.Item>
       </TabBarIOS>
     );
