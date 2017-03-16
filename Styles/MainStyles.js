@@ -12,6 +12,8 @@ export default StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   listStyle: {
+    flex: 1,
+    paddingTop: 20,
     width: width,
   },
   contentStyle: {
@@ -27,5 +29,5 @@ export default StyleSheet.create({
   imageStyle: {
     width: 120,
     height: 68
-  }
+  },
 });

@@ -4,10 +4,14 @@ import {
   View,
   ListView,
 } from 'react-native';
-import Dimensions from 'Dimensions'
-import Styles from '../Styles/MainStyles'
-import LoadingView from './LoadingView'
-import MovieListCell from './MovieListCell'
+import Dimensions from 'Dimensions';
+import Styles from '../Styles/MainStyles';
+import LoadingView from './LoadingView';
+import MovieListCell from './MovieListCell';
+import MovieDetail from './MovieDetail';
+
+// 请求的URL
+const REQUEST_URL = 'http://www.imooc.com/api/teacher?type=4&num=30';
 
 export default class MovieList extends Component {
   constructor(props) {
@@ -21,8 +25,7 @@ export default class MovieList extends Component {
     };
   }
   fetchData() {
-    let url = 'http://www.imooc.com/api/teacher?type=4&num=30';
-    fetch(url)
+    fetch(REQUEST_URL)
     .then((response) => response.json())
     .then((responseJson) => {
       this.setState({
@@ -35,9 +38,15 @@ export default class MovieList extends Component {
   componentDidMount() {
     this.fetchData();
   }
+  showDetail(rowData) {
+    self.props.navigator.push({
+      title: '子页面',
+      component: <MovieDetail />
+    });
+  }
   _renderRow(rowdata) {
     return(
-      <MovieListCell rowdata={rowdata} selectedRow={() => {console.log('点击了${rowdata.name}')}} />
+      <MovieListCell rowdata={rowdata} selectedRow={() => this.showDetail(rowdata)} />
     );
   }
   _renderLoadingView() {
