@@ -46,8 +46,15 @@ export default class MovieList extends Component {
   }
   _renderRow(rowdata) {
     return(
-      <MovieListCell rowdata={rowdata} selectedRow={() => this.showDetail(rowdata)} />
+      <MovieListCell rowdata={rowdata} selectedRow={() => this.showDetail(rowdata)} selectedRow={() => this._onPressRow(rowdata)} />
     );
+  }
+  _onPressRow(rowdata) {
+    this.props.navigator.push({
+      title: rowdata.name,
+      component: MovieDetail,
+      passProps: {rowdata}
+    });
   }
   _renderLoadingView() {
     return(
