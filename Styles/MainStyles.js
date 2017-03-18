@@ -1,8 +1,6 @@
+'use strict';
 import {StyleSheet} from 'react-native';
-import Dimensions from 'Dimensions'
-
-var width = Dimensions.get('window').width;
-var height = Dimensions.get('window').height;
+import ScreenSize from '../Utils/ScreenSize';
 
 export default StyleSheet.create({
   container: {
@@ -15,7 +13,7 @@ export default StyleSheet.create({
     flex: 1,
     marginTop: 60,
     marginBottom: 49,
-    width: width,
+    width: ScreenSize.size.width,
   },
   contentStyle: {
     flexDirection: 'row',

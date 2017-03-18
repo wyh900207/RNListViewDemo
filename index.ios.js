@@ -4,6 +4,8 @@
  * @flow
  */
 
+'use strict'
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,7 +13,7 @@ import {
   Text,
   View,
   TabBarIOS,
-} from 'react-native'; 
+} from 'react-native';
 import Tabbar from './Components/Tabbar'
 
 export default class RNListViewDemo extends Component {
@@ -23,4 +25,3 @@ export default class RNListViewDemo extends Component {
 }
 
 AppRegistry.registerComponent('RNListViewDemo', () => RNListViewDemo);
-  
